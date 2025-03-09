@@ -54,14 +54,13 @@ class Article(models.Model):
     titre = models.CharField(max_length=256)
     couverture = models.ImageField(upload_to="articles")
     resume = models.TextField()
-    contenu = CKEditor5Field(config_name='default')
     slug = models.SlugField(unique=True, blank=True, null=True)
     auteur_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="auteur_article_ids", verbose_name="auteurs")
     categorie_id = models.ForeignKey('blog.Categorie', on_delete=models.SET_NULL, null=True, related_name="categorie_article_ids", verbose_name="Catégories")
     tag_ids = models.ManyToManyField('blog.Tag', related_name="tag_article_ids", verbose_name="Tags")
     
     est_publie = models.BooleanField(default=False)
-    date_de_publicatio = models.DateField(verbose_name="Date de publication", auto_now_add=True)
+    date_de_publication = models.DateField(verbose_name="Date de publication", auto_now_add=True)
 
     # Standards
     statut = models.BooleanField(default=True)
