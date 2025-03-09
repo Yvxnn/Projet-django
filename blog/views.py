@@ -24,18 +24,7 @@ def contact(request):
 
     return render(request, 'contact.html', datas)
 
-@login_required
-def darshbord(request):
-    user = request.user
 
-    articles = Article.objects.filter(auteur_id=user)
-    print(articles)
-
-    datas = {
-        'articles' : articles
-    }
-
-    return render(request, 'dashboard.html', datas)
 
 @login_required
 def ajout_article(request):
